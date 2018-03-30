@@ -1,0 +1,6 @@
+<div class="categories-wrapper">
+    <img src="logo_whitebg.png" alt="" id="top-logo" {{action "toHome"}}>
+    {{#each bikes as |category|}}
+        <div class='category-main' {{action "redirect" category}}><p>{{category.name}}</p></div>
+    {{/each}}
+</div>

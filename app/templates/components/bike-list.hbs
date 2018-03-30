@@ -1,0 +1,13 @@
+<div class="item_display_wrapper">
+    {{#each bike as |bike|}}
+    <article class="item_display">
+        <img src="{{bike.image}}" alt="" class="item_preview_image">
+        <div class="item_display_name">
+            <span>{{bike.name}}</span>
+        </div>
+        <div class="item_display_description">
+            <span>{{bike.description}}</span>
+        </div>
+    </article>
+    {{/each}}
+</div>

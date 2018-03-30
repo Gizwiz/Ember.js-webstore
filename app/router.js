@@ -7,6 +7,15 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('about');
+  this.route('mtb');
+  this.route('road');
+  this.route('cyclocross');
+  this.route('triathlon');
+  this.route('trekking');
+  this.route('urban');
+  this.route('electric');
+  this.route('admin');
 });
 
 export default Router;
