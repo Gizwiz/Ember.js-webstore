@@ -57,7 +57,6 @@ module.exports = function (app) {
       dbo.collection("items").find({ 'category': searchCategory }).toArray(function (err, result) {
         if (err) throw err;
         db.close();
-        dbo = result;
         res.send(result);
       });
     });
