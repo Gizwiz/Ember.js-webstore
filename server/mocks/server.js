@@ -6,6 +6,7 @@ module.exports = function (app) {
   let serverRouter = express.Router();
   const bodyParser = require('body-parser');
   var MongoClient = require('mongodb').MongoClient;
+  var ObjectID = require('mongodb').ObjectID;
   var url = 'mongodb://user:password@ds127391.mlab.com:27391/items';
   //MongoClient.connect('mongodb://user:password@ds127391.mlab.com:27391/items');
 
@@ -57,7 +58,6 @@ module.exports = function (app) {
         if (err) throw err;
         db.close();
         dbo = result;
-        console.log(result);
         res.send(result);
       });
     });
@@ -65,7 +65,23 @@ module.exports = function (app) {
   });
 
   app.post('/api/item/', function (req, res) {
-    console.log(req);
+    //to be able to find documents in mongo by ID, need to convert to ObjectId
+    var o_id = new ObjectID(req.body.id);
+    try{
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("items");
+        //find with id:ObjectId query
+        dbo.collection("items").find({_id:o_id}).toArray(function(err, result) {
+          if (err) throw err;
+          db.close();
+          res.send(result);
+        });
+      });
+    } catch (e){
+      console.log(e);
+    }
+
   });
 
   serverRouter.delete('/:id', function (req, res) {

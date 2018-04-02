@@ -2,7 +2,8 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
     model(queryParams){
-        console.log(queryParams.id);
+        console.log(queryParams);
+        var item;
         return $.ajax({
             url: '/api/item/',
             method: 'POST',
@@ -11,6 +12,7 @@ export default Route.extend({
                 item = res;
            }
         }).then(function(){
+            console.log(item);
             return item;
         });
     }

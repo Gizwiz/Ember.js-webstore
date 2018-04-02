@@ -1,12 +1,12 @@
 <div class="container item_display_wrapper" >
-    {{#each bike as |bike|}}
+    {{#each bikes as |bike|}}
     <div class="row item_display">
         <div class="col-sm-3">
             <img src="{{bike.img}}" alt="" class="item_preview_image">
         </div>
         <div class="col-sm-6 item_info">
             <div class="row" {{action "display" bike}}>
-                <span>{{bike.name}}</span>
+                <span>{{bike.name}}&nbsp;{{bike._id}}</span>
             </div>
             <div class="row">
                 <span>{{bike.price}}{{bike.unit}}</span>
