@@ -16,6 +16,7 @@ Router.map(function() {
   this.route('urban');
   this.route('electric');
   this.route('admin');
+  this.route('item');
 });
 
 export default Router;

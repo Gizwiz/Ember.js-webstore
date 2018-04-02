@@ -1,8 +1,8 @@
 export default function () {
   this.namespace = '/api';
 
-
   this.get('/bikes/', function () {
+
     return {
       data: [{
         type: 'bike',
@@ -57,6 +57,7 @@ export default function () {
       ]
     };
   });
+
 
   this.get('/mtbs/', function () {
     return {

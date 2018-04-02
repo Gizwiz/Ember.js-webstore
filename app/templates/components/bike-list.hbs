@@ -1,13 +1,33 @@
-<div class="item_display_wrapper">
+<div class="container item_display_wrapper" >
     {{#each bike as |bike|}}
-    <article class="item_display">
-        <img src="{{bike.image}}" alt="" class="item_preview_image">
-        <div class="item_display_name">
-            <span>{{bike.name}}</span>
+    <div class="row item_display">
+        <div class="col-sm-3">
+            <img src="{{bike.img}}" alt="" class="item_preview_image">
         </div>
-        <div class="item_display_description">
-            <span>{{bike.description}}</span>
+        <div class="col-sm-6 item_info">
+            <div class="row" {{action "display" bike}}>
+                <span>{{bike.name}}</span>
+            </div>
+            <div class="row">
+                <span>{{bike.price}}{{bike.unit}}</span>
+            </div>
+            <div class="row">
+                <span>{{bike.description}}</span>
+            </div>
+
         </div>
-    </article>
+        <div class="col-sm-3">
+            <ul>
+                {{#each bike.salesPoints as |point|}}
+                <li>{{point}}</li>
+                {{/each}}
+            </ul>
+
+        </div>
+    </div>
     {{/each}}
 </div>
+
+<script>
+   // $(".page_wrapper").fadeIn(300);
+</script>
