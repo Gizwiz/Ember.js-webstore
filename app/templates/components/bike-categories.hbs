@@ -1,6 +1,29 @@
-<div class="categories-wrapper">
-    <img src="logo_whitebg.png" alt="" id="top-logo" {{action "toHome"}}>
-    {{#each bikes as |category|}}
-        <div class='category-main' {{action "redirect" category}}><p class="category_name">{{category.name}}</p></div>
-    {{/each}}
+<div class="container-fluid categories-wrapper">
+    <div class="row">
+        <div class="col-xl-12 dropdown">
+            <img src="logo_whitebg.png" alt="" id="top-logo" {{action "toHome"}}>
+            <div>
+                {{#each bikes as |category| }}
+                <div class='category-main'>
+                    <div style="height:100%" {{action "redirect" category}} {{action "populateDropdown" category on="mouseEnter" }} class="category_name dropdown">{{category.name}}</div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="container-fluid dropdown-content">
+                <div class="row">
+                    <div class="col">
+
+                    </div>
+                    <div class="col">
+                        <div id="link-list"></div>
+                    </div>
+                    <div class="col">
+                        <div id="link-list-image-container"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>

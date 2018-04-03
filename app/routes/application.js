@@ -5,24 +5,28 @@ export default Route.extend({
         return [
             {
                 name: 'MTB',
+                subcategories: ["Hardtail", "Full Suspension", "Enduro", "FreeRide", "Trail", "XC", "Women's Hardtail", "Women's Full Suspension"],
+                image: 'mtb/enduro_1.jpg',
             },
             {
                 name: 'Road',
-            },
-            {
-                name: 'Cyclocross',
-            },
-            {
-                name: 'Triathlon',
+                subcategories: ["Aluminum","Carbon", "Gravel", "Triathlon", "Cyclocross", "Women's Road Bikes"],
+                image: {},
             },
             {
                 name: 'Trekking',
+                subcategories: ["Trekking Bikes", "Women's Trekking Bikes"],
+                image: {},
             },
             {
                 name: 'Urban',
+                subcategories: ["Fixie", "Vintage", "Cruiser", "BMX"],
+                image: {},
             },
             {
-                name: 'Electric'
+                name: 'Electric',
+                subcategories: ["E-Mountain","E-Road", "E-Cross", "E-Trekking"],
+                image: {},
             },
         ]
     }
