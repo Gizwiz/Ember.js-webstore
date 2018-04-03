@@ -9,7 +9,7 @@ body, html {
     padding-right: 0;
   }
   .container-parallax{
-    height: 720px;
+    height: 65vh;
     margin: 0;
     font: 400 15px/1.8 "Lato", sans-serif;
     color: #777;
@@ -76,6 +76,10 @@ body, html {
     z-index: 1000;
     text-align: center;
     border-bottom: 1px solid lightgrey;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
 }
 .category-main{
     display: inline-block;
@@ -83,6 +87,7 @@ body, html {
     padding-right: 2%;
     margin-top: 10px;
     margin-bottom: 10px;
+    font: 17px "Lato", sans-serif;
 }
 .category_name{
     cursor: pointer;
