@@ -23,6 +23,9 @@ body{
 .category_name{
     cursor: pointer;
 }
+.container_fluid{
+    margin: 0;
+}
 
 /*
 .row{
@@ -34,6 +37,14 @@ body{
 .col-sm-6{
     border: 1px solid blue;
 }*/
+
+.index_triple_box{
+
+}
+
+.triple_box{
+    border: 1px solid black;
+}
 
 #top-logo{
     width: 150px;

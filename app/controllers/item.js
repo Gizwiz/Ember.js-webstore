@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import Controlled from '@ember/controller';
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   queryParams: ['id'],
   category: null,
 });
