@@ -2,6 +2,7 @@
 
 Live at:
 https://genericbikeshop.herokuapp.com/
+The page is currently running as a dev build. Expect issues.
 
 ## Prerequisites
 
