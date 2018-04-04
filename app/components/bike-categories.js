@@ -9,6 +9,9 @@ export default Component.extend({
             var r = category.name.toLowerCase();
             this.get('router').transitionTo(r);
         },
+        login(){
+            this.get('router').transitionTo('login');
+        },
         toHome() {
             this.get('router').transitionTo('/');
         },
