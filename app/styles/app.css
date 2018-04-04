@@ -14,7 +14,7 @@ body, html {
     font: 400 15px/1.8 "Lato", sans-serif;
     color: #777;
   }
-  .bgimg-1, .bgimg-2, .bgimg-3 {
+  .bgimg-1, .bgimg-2, .bgimg-3, .bgimg-4 {
     position: relative;
     opacity: 0.65;
     background-attachment: fixed;
@@ -38,6 +38,10 @@ body, html {
     background-image: url("../../img_parallax.jpg");
     min-height: 400px;
   }
+  .bgimg-4{
+    background-image: url("../../img_parallax4.jpg");
+    min-height: 650px;
+  }
   
   .caption {
     position: absolute;
@@ -56,11 +60,23 @@ body, html {
     font-size: 25px;
     letter-spacing: 10px;
   }
-  
-  h3 {
+  h2 {
     letter-spacing: 5px;
     text-transform: uppercase;
     font: 20px "Lato", sans-serif;
+    color: #111;
+  }
+  h3 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 32px "Lato", sans-serif;
+    color: #111;
+  }
+  
+  h4 {
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font: 15px "Lato", sans-serif;
     color: #111;
   }
   
@@ -110,11 +126,37 @@ body, html {
     width:1920px;
     margin:0;
 }
+#index-showcase-image{
+    width: 55vw;
+}
 .index_main_container{
     margin:0;
 }
-.index_triple_box{
+#showcase{
+    margin-top: 2%;
     width: 100%;
+}
+.showcase-item{
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid grey;
+    padding-left: 1%;
+}
+.showcase-item-name{
+    height: 75px;
+}
+.showcase-item-image{
+    height: 32vh;
+    width: 20vw;
+    margin-bottom: 5%;
+}
+.index_triple_box{
+    /*to center boxes:
+        margin-left = (100-width)/2
+    */
+    width: 75%;
+    text-align: center;
+    margin-left: 12.5%;
 }
 .triple_box{
     border: 1px solid black;

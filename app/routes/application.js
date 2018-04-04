@@ -11,22 +11,18 @@ export default Route.extend({
             {
                 name: 'Road',
                 subcategories: ["Aluminum","Carbon", "Gravel", "Triathlon", "Cyclocross", "Women's Road Bikes"],
-                image: {},
             },
             {
                 name: 'Trekking',
                 subcategories: ["Trekking Bikes", "Women's Trekking Bikes"],
-                image: {},
             },
             {
                 name: 'Urban',
                 subcategories: ["Fixie", "Vintage", "Cruiser", "BMX"],
-                image: {},
             },
             {
                 name: 'Electric',
                 subcategories: ["E-Mountain","E-Road", "E-Cross", "E-Trekking"],
-                image: {},
             },
         ]
     }

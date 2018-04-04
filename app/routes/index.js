@@ -2,28 +2,17 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
     model() {
-        return [
-            {
-                name: 'MTB',
-            },
-            {
-                name: 'Road',
-            },
-            {
-                name: 'Cyclocross',
-            },
-            {
-                name: 'Triathlon',
-            },
-            {
-                name: 'Trekking',
-            },
-            {
-                name: 'Urban',
-            },
-            {
-                name: 'Electric'
-            },
-        ]
+        console.log("index route.js");
+        var item;
+        return $.ajax({
+            url: '/api/showcase/',
+            method: 'POST',
+            success: function(res){
+                item = res;
+           }
+        }).then(function(){
+            console.log(item);
+            return item;
+        });
     }
 });

@@ -1,0 +1,15 @@
+<div id="showcase" class="row">
+    {{#each item as |item|}}
+    <div class="col-xl-4 showcase-item">
+        <div class="row showcase-item-name">
+            <div class="col"><h4>{{item.name}}</h4></div>
+        </div>
+        <div class="row">
+            <div class="col"><img src="{{item.img}}" alt="" class="showcase-item-image"></div>
+        </div>
+        <div class="row">
+            <div class="col"><h4>{{item.price}}{{item.unit}}</h4></div>
+        </div>
+    </div>
+    {{/each}}
+</div>

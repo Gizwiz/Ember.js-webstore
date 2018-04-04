@@ -13,7 +13,7 @@ module.exports = function (app) {
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());       // to support JSON-encoded bodies
 
-  console.log('server');
+  console.log('Mock Server Booted');
 
   serverRouter.get('/', function (req, res) {
     res.send({
@@ -74,6 +74,28 @@ module.exports = function (app) {
         dbo.collection("items").find({_id:o_id}).toArray(function(err, result) {
           if (err) throw err;
           db.close();
+          res.send(result);
+        });
+      });
+    } catch (e){
+      console.log(e);
+    }
+
+  });
+
+  app.post('/api/showcase/', function (req, res) {
+    //return random item from db
+    console.log("server api/showcase");
+    try{
+      MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("items");
+        //retrieve 3 random entries from db to showcase
+        dbo.collection("items").aggregate([{$sample: {size: 3}}]).toArray(function(err, result) {
+          if (err) throw err;
+          db.close();
+          console.log("aggregate result");
+          console.log(result);
           res.send(result);
         });
       });
