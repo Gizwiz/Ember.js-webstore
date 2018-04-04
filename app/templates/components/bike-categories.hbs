@@ -1,7 +1,9 @@
 <div class="container-fluid categories-wrapper">
     <div class="row">
-        <div class="col-xl-12 dropdown">
+        <div class="col ">
             <img src="logo_whitebg.png" alt="" id="top-logo" {{action "toHome"}}>
+        </div>
+        <div class="col dropdown">
             <div>
                 {{#each bikes as |category| }}
                 <div class='category-main'>
@@ -9,21 +11,21 @@
                 </div>
                 {{/each}}
             </div>
-            <div class="container-fluid dropdown-content">
-                <div class="row">
-                    <div class="col">
-
+            <div class="container-fluid dropdown-content" id="ddc">
+                <div class="row" style="height:100%;">
+                    <div class="col" {{action "closeDropdown" on="mouseEnter" }}>
                     </div>
-                    <div class="col">
+                    <div class="col" {{action "closeDropdown" on="mouseLeave" }}>
                         <div id="link-list"></div>
                     </div>
-                    <div class="col">
+                    <div class="col" {{action "closeDropdown" on="mouseEnter" }}>
                         <div id="link-list-image-container"></div>
                     </div>
                 </div>
             </div>
-
+        </div>
+        <div class="col">
+            <button class="btn btn-dark" {{action "login"}}>Sign in</button>
         </div>
     </div>
-
 </div>
