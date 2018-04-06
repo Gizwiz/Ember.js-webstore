@@ -41,9 +41,12 @@
     "ember-data": "~3.0.0",
     "ember-data-filter": "^1.13.0",
     "ember-export-application-global": "^2.0.0",
+    "ember-form-for": "^2.0.0-beta.1",
+    "ember-jquery": "^1.0.5",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
     "ember-resolver": "^4.0.0",
+    "ember-simple-auth": "^1.6.0",
     "ember-source": "~3.0.0",
     "ember-welcome-page": "^3.0.0",
     "eslint-plugin-ember": "^5.0.0",
@@ -55,8 +58,11 @@
     "node": "^4.5 || 6.* || >= 7.*"
   },
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
     "mongoose": "^5.0.12",
+    "node-session": "^1.2.1",
     "nodemon": "^1.17.3"
   },
   "bugs": {

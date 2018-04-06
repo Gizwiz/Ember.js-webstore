@@ -2,6 +2,13 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
     model() {
+        $.ajax({
+            url:"authentication/session/check",
+            method: "GET",
+            success: function(res){
+                console.log(res);
+            }
+        })
         return [
             {
                 name: 'MTB',

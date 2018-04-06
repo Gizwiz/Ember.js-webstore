@@ -2,12 +2,21 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     'ember-bootstrap': {
       'bootstrapVersion': 4,
       'importBootstrapFont': true,
       'importBootstrapCSS': true
+    },
+    'ember-form-for': {
+
+    },
+    // Disable jQuery bundled with Ember.js 
+    vendorFiles: { 'jquery.js': null },
+    // Example to include jQuery slim instead of default build 
+    jquery: {
+      slim: false
     }
   });
 
