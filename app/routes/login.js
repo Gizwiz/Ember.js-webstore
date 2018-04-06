@@ -43,19 +43,11 @@ export default Route.extend({
                     method: "POST",
                     data: data,
                     success: function (res) {
-                        
+
                         if (res.email && res.password) {
-                            
-                            $.ajax({
-                                url:"/authentication/sessionate",
-                                method: "POST",
-                                success: function(res){
-                                    console.log("sessionate front end res");
-                                },error: function(err){
-                                    console.log(err);
-                                }
-                            })
+
                         }
+
                     },
                     error: function (err) {
                         document.getElementById('login-server-response').innerHTML = "An server error occured. Server authentication failed.";

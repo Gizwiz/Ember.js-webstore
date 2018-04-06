@@ -42,13 +42,8 @@ export default Component.extend({
             document.getElementById('ddc').style.display = 'block';
         },
         checkSession(){
-            $.ajax({
-                url:"authentication/session/check",
-                method: "POST",
-                success: function(res){
-                    console.log(res);
-                }
-            })
+            Ember.$.post('/authentication/check').then(function(response){ console.log(response)}); 
+
         }
     }
 });

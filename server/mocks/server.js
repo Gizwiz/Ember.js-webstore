@@ -17,7 +17,6 @@ module.exports = function (app) {
     saveUninitialized: true,
     cookie: { maxAge: 60000 },
   }));
-  console.log(session);
   //BCRYPT
   var bcrypt = require('bcrypt');
   const saltRounds = 10;
@@ -28,7 +27,7 @@ module.exports = function (app) {
   app.use(bodyParser.json());       // to support JSON-encoded bodies
 
   console.log('Mock Server Booted');
-
+/*
   serverRouter.get('/', function (req, res) {
     res.send({
       'server': []
@@ -59,18 +58,15 @@ module.exports = function (app) {
         id: req.params.id
       }
     });
-  });
+  });*/
 
-  app.post('/authentication/session/check', function(req,res){
-    console.log("check");
-    if(req.session===undefined){
-      console.log("undefined session");
-      return {status: "undefined"};
-      
+  app.post('/authentication/check', function (req, res) {
+
+    if (req.session === undefined) {
+      return { status: "undefined" };
+
     } else {
-      console.log("checker");
       console.log(req.session);
-      console.log(session);
       return req.session;
     }
 
@@ -174,12 +170,12 @@ module.exports = function (app) {
   });
 
   app.post('/authentication/logout', function (req, res) {
-    if(req.session===undefined){
+    if (req.session === undefined) {
       return;
     }
     req.session.destroy(function (err) {
       // cannot access session here
-      if(err){}
+      if (err) { }
     });
     console.log(session);
   });
@@ -204,6 +200,7 @@ module.exports = function (app) {
             //if pswrds match, res is true
             if (result === true) {
               //if match, start session
+              console.log(userId);
               req.session.userId = userId;
               console.log(req.session);
               res.send({ email: true, password: true, userId: userId });
@@ -219,7 +216,7 @@ module.exports = function (app) {
 
 
   app.post('/authentication/sessionate', function (req, res) {
-    
+
   });
 
   serverRouter.delete('/:id', function (req, res) {
