@@ -1,0 +1,37 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col">
+            <h1 style="text-align: center">Register a new account</h1>
+        </div>
+    </div>
+    <div class="row">
+        <form>
+            <div class="container">
+                <div id="register-messages">
+                    <span id="server-response"></span>
+                    <span id='fn-error'></span>
+                    <span id='ln-error'></span>
+                    <span id='email-error'></span>
+                    <span id='psw-error'></span>
+                </div>
+                <label for="Name">
+                    <b>First Name</b>
+                </label>
+                {{input value=model.firstName class="registration" id="register-firstName"}}
+                <label for="lastname">
+                    <b>Last Name</b>
+                </label>
+                {{input value=model.lastName class="registration" id="register-lastName"}}
+                <label for="email">
+                    <b>Email</b>
+                </label>
+                {{input value=model.email class="registration" id="register-email"}}
+                <label for="psw">
+                    <b>Password</b>
+                </label>
+                {{input value=model.password class="registration"  id="register-password" type="password"}}
+                <button class="login-button" {{action "createAccount"}}>Register</button>
+            </div>
+        </form>
+    </div>
+</div>

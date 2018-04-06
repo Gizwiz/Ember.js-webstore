@@ -58,6 +58,9 @@ export default function () {
     };
   });
 
+  this.post('users', function(){
+
+  });
 
   this.get('/mtbs/', function () {
     return {

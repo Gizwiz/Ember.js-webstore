@@ -9,8 +9,17 @@ export default Component.extend({
             var r = category.name.toLowerCase();
             this.get('router').transitionTo(r);
         },
-        login(){
+        login() {
             this.get('router').transitionTo('login');
+        },
+        logout() {
+            $.ajax({
+                url: "authentication/logout",
+                method: 'POST',
+                success: function (res) {
+
+                }
+            });
         },
         toHome() {
             this.get('router').transitionTo('/');
@@ -22,15 +31,19 @@ export default Component.extend({
             for (var i = 0; i < cats.subcategories.length; i++) {
                 document.getElementById('link-list').innerHTML += "<a>" + cats.subcategories[i] + "</a>";
             }
-            document.getElementById('link-list-image-container').innerHTML = "<img class='link-list-image' src='"+cats.image+"' alt=''>";
+            document.getElementById('link-list-image-container').innerHTML = "<img class='link-list-image' src='" + cats.image + "' alt=''>";
         },
-        closeDropdown(category){
+        closeDropdown(category) {
             console.log("close dropdown");
             document.getElementById('ddc').style.display = 'none';
         },
-        openDropdown(){
+        openDropdown() {
             console.log("open dropdown");
             document.getElementById('ddc').style.display = 'block';
+        },
+        checkSession(){
+            Ember.$.post('/authentication/check').then(function(response){ console.log(response)}); 
+
         }
     }
 });

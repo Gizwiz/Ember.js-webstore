@@ -1,0 +1,25 @@
+<div class="container login-container">
+    <div class="row">
+        <div class="col">Sign in</div>
+    </div>
+    <div class="row">
+        <form>
+            <div class="container">
+                <div id="login-messages">
+                    <span id="login-server-response"></span>
+                    <span id="login-email-error"></span>
+                    <span id="login-psw-error"></span>
+                </div>
+                <label for="email">
+                    <b>Email</b>
+                </label>
+                {{input value=model.email class="login" id="login-email"}}
+                <label for="psw">
+                    <b>Password</b>
+                </label>
+                {{input value=model.password class="login" id="login-password" type="password"}}
+                <button class="login-button" {{action "authenticateLogin"}}>Sign in</button>
+            </div>
+        </form>
+    </div>
+</div>

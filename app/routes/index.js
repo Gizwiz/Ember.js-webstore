@@ -2,7 +2,6 @@ import Route from '@ember/routing/route';
 
 export default Route.extend({
     model() {
-        console.log("index route.js");
         var item;
         return $.ajax({
             url: '/api/showcase/',
