@@ -15,7 +15,7 @@ module.exports = function (app) {
     secret: 'wololoo',
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 60000 },
+    cookie: {  },
   }));
   //BCRYPT
   var bcrypt = require('bcrypt');
