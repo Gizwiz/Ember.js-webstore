@@ -25,9 +25,14 @@
             </div>
         </div>
         <div class="col">
-            <button {{action 'login'}} >Login</button>
-            <button {{action 'logout'}}>Logout</button>
-            <button {{action 'checkSession'}}>Check</button>
+            <div class="col">
+                <h3 id="logged-in-user"></h3>
+            </div>
+            <div class="col">
+                <button {{action 'login'}} id="login-nav-button">Login</button>
+                <button {{action 'logout'}} id="logout-nav-button">Logout</button>
+                <button {{action 'checkSession'}}>Check</button>
+            </div>
         </div>
     </div>
 </div>

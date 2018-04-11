@@ -10,7 +10,6 @@ export default Route.extend({
                 item = res;
            }
         }).then(function(){
-            console.log(item);
             return item;
         });
     }

@@ -346,10 +346,7 @@ body, html {
         height: 4vh;
         border: 1px solid lightgrey; 
     }
-    #login-messages span{
-        display: table;
-    }
-    #login-messages{
+    .error-message{
         color:red;
     }
     #register-messages span{

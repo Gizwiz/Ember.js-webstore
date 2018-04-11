@@ -5,17 +5,17 @@
     <div class="row">
         <form>
             <div class="container">
-                <div id="login-messages">
-                    <span id="login-server-response"></span>
-                    <span id="login-email-error"></span>
-                    <span id="login-psw-error"></span>
+                <div class="error-message">
+                    {{serverError}}
                 </div>
                 <label for="email">
-                    <b>Email</b>
+                    <b>Email</b><br>
+                    <span class="error-message">{{emailError}}</span>
                 </label>
-                {{input value=model.email class="login" id="login-email"}}
+                {{input value=model.email class="login " id="login-email"}}
                 <label for="psw">
-                    <b>Password</b>
+                    <b>Password</b><br>
+                    <span class="error-message">{{passwordError}}</span>
                 </label>
                 {{input value=model.password class="login" id="login-password" type="password"}}
                 <button class="login-button" {{action "authenticateLogin"}}>Sign in</button>
