@@ -72,16 +72,17 @@ module.exports = function (app) {
   });
 
   app.post('/api/', function (req, res) {
-    //get ory for search
-    var searchory = req.body.ory
+    //get query for search
+    console.log(req.body);
+    var searcategory = req.body.category
     var dbo;
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;
       dbo = db.db("items");
-      dbo.collection("items").find({ 'ory': searchory }).toArray(function (err, result) {
+      dbo.collection("items").find({ 'category': searcategory }).toArray(function (err, result) {
         if (err) throw err;
         db.close();
-        res.send(result);
+        return res.send(result);
       });
     });
 
