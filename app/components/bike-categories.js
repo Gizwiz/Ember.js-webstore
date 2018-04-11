@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
@@ -10,6 +11,7 @@ export default Component.extend({
             this.get('router').transitionTo(r);
         },
         login() {
+            console.log("loginn");
             this.get('router').transitionTo('login');
         },
         logout() {
@@ -17,7 +19,7 @@ export default Component.extend({
                 url: "authentication/logout",
                 method: 'POST',
                 success: function (res) {
-
+                    document.getElementById('logged-in-user').innerHTML = "";
                 }
             });
         },
@@ -33,7 +35,7 @@ export default Component.extend({
             }
             document.getElementById('link-list-image-container').innerHTML = "<img class='link-list-image' src='" + cats.image + "' alt=''>";
         },
-        closeDropdown(category) {
+        closeDropdown() {
             console.log("close dropdown");
             document.getElementById('ddc').style.display = 'none';
         },
@@ -42,8 +44,13 @@ export default Component.extend({
             document.getElementById('ddc').style.display = 'block';
         },
         checkSession(){
-            Ember.$.post('/authentication/check').then(function(response){ console.log(response)}); 
-
+            $.ajax({
+                url: "authentication/checkSession",
+                method: 'POST',
+                success: function (res) {
+                    console.log(res);
+                }
+            }); 
         }
     }
 });

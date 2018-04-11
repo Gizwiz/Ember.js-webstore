@@ -15,7 +15,7 @@ module.exports = function (app) {
     secret: 'wololoo',
     resave: false,
     saveUninitialized: true,
-    cookie: {  },
+    cookie: {},
   }));
   //BCRYPT
   var bcrypt = require('bcrypt');
@@ -27,47 +27,46 @@ module.exports = function (app) {
   app.use(bodyParser.json());       // to support JSON-encoded bodies
 
   console.log('Mock Server Booted');
-/*
-  serverRouter.get('/', function (req, res) {
-    res.send({
-      'server': []
+  /*
+    serverRouter.get('/', function (req, res) {
+      res.send({
+        'server': []
+      });
     });
-  });
-
-  serverRouter.get('/', function (req, res) {
-    res.send({
-      'server': []
+  
+    serverRouter.get('/', function (req, res) {
+      res.send({
+        'server': []
+      });
     });
-  });
-
-  serverRouter.post('/', function (req, res) {
-    res.status(201).end();
-  });
-
-  serverRouter.get('/:id', function (req, res) {
-    res.send({
-      'server': {
-        id: req.params.id
-      }
+  
+    serverRouter.post('/', function (req, res) {
+      res.status(201).end();
     });
-  });
-
-  serverRouter.put('/:id', function (req, res) {
-    res.send({
-      'server': {
-        id: req.params.id
-      }
+  
+    serverRouter.get('/:id', function (req, res) {
+      res.send({
+        'server': {
+          id: req.params.id
+        }
+      });
     });
-  });*/
+  
+    serverRouter.put('/:id', function (req, res) {
+      res.send({
+        'server': {
+          id: req.params.id
+        }
+      });
+    });*/
 
-  app.post('/authentication/check', function (req, res) {
-
-    if (req.session === undefined) {
-      return { status: "undefined" };
-
+  app.post('/authentication/checkSession', function (req, res) {
+    console.log("Checking user session");
+    console.log(req.session.userId);
+    if (req.session.userId === undefined) {
+      return res.send({ status: "inactive" });
     } else {
-      console.log(req.session);
-      return req.session;
+      return res.send({ status: "active", session: req.session });
     }
 
   });
@@ -170,14 +169,15 @@ module.exports = function (app) {
   });
 
   app.post('/authentication/logout', function (req, res) {
+    console.log(req.session);
     if (req.session === undefined) {
       return;
     }
     req.session.destroy(function (err) {
       // cannot access session here
-      if (err) { }
+      res.send({ status: "success" })
+      if (err) { res.send({ status: "error" }) }
     });
-    console.log(session);
   });
 
   app.post('/authentication/login', function (req, res) {
@@ -193,22 +193,23 @@ module.exports = function (app) {
         db.close();
         if (result.length === 1) {
           //turn plaintext pw into has too compare to db entry
-          var userId = result[0]._id;
-          console.log(result);
-          console.log(req.body.password + "::" + result[0].password);
+          var user = result[0];
           bcrypt.compare(req.body.password, result[0].password, function (err, result) {
             //if pswrds match, res is true
             if (result === true) {
+              console.log(result);
               //if match, start session
-              console.log(userId);
-              req.session.userId = userId;
-              console.log(req.session);
-              res.send({ email: true, password: true, userId: userId });
+              //set session user id as user id found in db.
+              req.session.userId = user._id;
+              //pass user info to front for localstorage to server info
+              return res.send({ email: true, password: true, user: user });
+            } else {
+              return res.send({ email: true, password: false });
             }
           })
         } else {
           console.log("no result");
-          res.send({ email: false, password: false })
+          return res.send({ email: false, password: false })
         }
       });
     });
