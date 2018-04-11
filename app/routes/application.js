@@ -6,7 +6,7 @@ export default Route.extend({
         didTransition() {
             this.checkSession();
         },
-        willTransition(transition) {
+        willTransition() {
             this.checkSession();
         }
     },

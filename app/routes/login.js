@@ -41,15 +41,13 @@ export default Route.extend({
                     data: { email: email, password: psw },
                     controller: this.controller, //jquery ajax redefines this, so have to refer to the ember controller like this
                     success: function (res) {
-                        console.log(this.controller.get('testError'));
                         if (res.email && res.password) {
-                            console.log(res.user);
                             localStorage.setItem('user', JSON.stringify(res.user));
                             document.location.href = '/';
-                        } else if(res.email && !res.password){
+                        } else if (res.email && !res.password) {
                             document.getElementById('login-password').style.borderColor = "red";
                             this.controller.set('passwordError', 'Invalid password');
-                        } else if (!res.email){
+                        } else if (!res.email) {
                             this.controller.set('emailError', 'An account with this email was not found');
                         }
                     },

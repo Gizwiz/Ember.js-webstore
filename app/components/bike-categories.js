@@ -11,7 +11,6 @@ export default Component.extend({
             this.get('router').transitionTo(r);
         },
         login() {
-            console.log("loginn");
             this.get('router').transitionTo('login');
         },
         logout() {
@@ -36,21 +35,18 @@ export default Component.extend({
             document.getElementById('link-list-image-container').innerHTML = "<img class='link-list-image' src='" + cats.image + "' alt=''>";
         },
         closeDropdown() {
-            console.log("close dropdown");
             document.getElementById('ddc').style.display = 'none';
         },
         openDropdown() {
-            console.log("open dropdown");
             document.getElementById('ddc').style.display = 'block';
         },
-        checkSession(){
+        checkSession() {
             $.ajax({
                 url: "authentication/checkSession",
                 method: 'POST',
-                success: function (res) {
-                    console.log(res);
+                success: function () {
                 }
-            }); 
+            });
         }
     }
 });
