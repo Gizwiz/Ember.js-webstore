@@ -3,24 +3,24 @@ import Component from '@ember/component';
 import { inject as service } from '@ember/service';
 
 export default Component.extend({
+    session: false,
+    user: '',
+    test: 'ASD',
     router: service(),
+    model() {
+        return this.store.createRecord('bc');
+    },
     actions: {
+        didTransition() {
+            this.checkSession();
+        },
+        willTransition() {
+            this.checkSession();
+        },
         redirect(category) {
             // $(".page_wrapper").fadeOut(200);
             var r = category.name.toLowerCase();
             this.get('router').transitionTo(r);
-        },
-        login() {
-            this.get('router').transitionTo('login');
-        },
-        logout() {
-            $.ajax({
-                url: "authentication/logout",
-                method: 'POST',
-                success: function (res) {
-                    document.getElementById('logged-in-user').innerHTML = "";
-                }
-            });
         },
         toHome() {
             this.get('router').transitionTo('/');
@@ -40,13 +40,5 @@ export default Component.extend({
         openDropdown() {
             document.getElementById('ddc').style.display = 'block';
         },
-        checkSession() {
-            $.ajax({
-                url: "authentication/checkSession",
-                method: 'POST',
-                success: function () {
-                }
-            });
-        }
     }
 });

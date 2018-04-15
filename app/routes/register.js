@@ -1,5 +1,5 @@
 import Route from '@ember/routing/route';
-
+import $ from 'jquery';
 export default Route.extend({
     model() {
         return this.store.createRecord('user');
@@ -83,7 +83,6 @@ export default Route.extend({
                     method: "POST",
                     data: data,
                     success: function (res) {
-                        console.log(res);
                         if (res.state === "error") {
                             document.getElementById('server-response').innerHTML = "An account with this email already exists. Please try another email address.";
                             document.getElementById('register-email').style.borderColor = "red";
@@ -93,7 +92,7 @@ export default Route.extend({
                             document.getElementById('server-response').innerHTML = "An error occured. The server responded with something it shouldn't!";
                         }
                     },
-                    error: function (err) {
+                    error: function () {
                         document.getElementById('server-response').innerHTML = "An server error occured. Server authentication failed.";
                     }
                 })

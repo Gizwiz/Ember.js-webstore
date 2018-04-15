@@ -39,7 +39,7 @@ export default Route.extend({
                     url: "/authentication/login",
                     method: "POST",
                     data: { email: email, password: psw },
-                    controller: this.controller, //jquery ajax redefines this, so have to refer to the ember controller like this
+                    controller: this.controller, //jquery ajax redefines the 'this' keyword, so have to refer to the ember controller like so
                     success: function (res) {
                         if (res.email && res.password) {
                             localStorage.setItem('user', JSON.stringify(res.user));
@@ -73,6 +73,6 @@ export default Route.extend({
         return regex.test(email);
     },
     login(userId) {
-        console.log("Loggin in user " + userId);
+        
     }
 });

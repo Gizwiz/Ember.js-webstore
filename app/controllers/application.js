@@ -1,11 +1,7 @@
-import Ember from 'ember';
+import Controller from '@ember/controller';
 
-export default Ember.Controller.extend({
-  session: Ember.inject.service('session'),
-
+export default Controller.extend({
   actions: {
-    invalidateSession() {
-      this.get('session').invalidate();
-    }
+    
   }
 });
