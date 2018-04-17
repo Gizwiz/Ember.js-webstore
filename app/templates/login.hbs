@@ -1,9 +1,9 @@
-<div class="container login-container">
+<!--<div class="container login-container">
     <div class="row">
         <div class="col">Sign in</div>
     </div>
     <div class="row">
-        <form>
+        <form {{action 'authentication' on='submit'}}>
             <div class="container">
                 <div class="error-message">
                     {{serverError}}
@@ -22,4 +22,23 @@
             </div>
         </form>
     </div>
+</div>
+-->
+<div class="container">
+    <div class="error-message">
+        {{serverError}} {{#if errorMessage}}
+        <p>{{errorMessage}}</p>
+        {{/if}}
+    </div>
+    <form {{action 'authenticate' on='submit' }}>
+        <label for="identification">Email
+            <span class="error-message">{{emailError}}</span>
+        </label>
+        {{input id='identification' placeholder='Enter Login' value=identification}}
+        <label for="password">Password
+            <span class="error-message">{{passwordError}}</span>
+        </label>
+        {{input id='password' placeholder='Enter Password' type='password' value=password}}
+        <button type="submit">Login</button>
+    </form>
 </div>

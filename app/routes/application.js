@@ -1,6 +1,9 @@
+import Ember from 'ember';
 import Route from '@ember/routing/route';
 import $ from 'jquery';
 import { inject } from '@ember/controller';
+
+
 export default Route.extend({
     session: false,
     user: '',

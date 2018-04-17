@@ -3,7 +3,7 @@ import $ from 'jquery';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 export default Component.extend({
-    session: false,
+    activeSession: false,
     user: '',
     router: service(),
     init() {
@@ -21,10 +21,10 @@ export default Component.extend({
             success: function (res) {
                 if (res.status === "active") {
                     var user = JSON.parse(localStorage.getItem('user'));
-                    this.component.set('session', true);
+                    this.component.set('activeSession', true);
                     this.component.set('user', user);
                 } else {
-                    this.component.set('session', false);
+                    this.component.set('activeSession', false);
                     this.component.set('user', '');
                 }
             }
@@ -36,13 +36,15 @@ export default Component.extend({
         login() {
             this.get('router').transitionTo('login');
         },
+        //end session
         logout() {
             $.ajax({
                 url: "authentication/logout",
                 method: 'POST',
                 component: this,
                 success: function () {
-                    this.component.set('session', false);
+                    //if server receives logout request, also change front
+                    this.component.set('activeSession', false);
                     this.component.set('user', '');
                 }
             });
