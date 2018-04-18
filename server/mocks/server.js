@@ -59,17 +59,17 @@ module.exports = function (app) {
         }
       });
     });*/
-/*
-  app.post('/authentication/checkSession', function (req, res) {
-    console.log("Checking user session");
-    console.log(req.session.userId);
-    if (req.session.userId === undefined) {
-      return res.send({ status: "inactive" });
-    } else {
-      return res.send({ status: "active", session: req.session });
-    }
-
-  });*/
+  /*
+    app.post('/authentication/checkSession', function (req, res) {
+      console.log("Checking user session");
+      console.log(req.session.userId);
+      if (req.session.userId === undefined) {
+        return res.send({ status: "inactive" });
+      } else {
+        return res.send({ status: "active", session: req.session });
+      }
+  
+    });*/
 
   app.post('/api/', function (req, res) {
     //get query for search
@@ -193,16 +193,19 @@ module.exports = function (app) {
               //if match, start session
               //set session user id as user id found in db.
               //pass user info to front for localstorage to server info
-              return res.send({access_token: "dokken", email: true, password: true, user: user });
+              return res.status(200).json({"access_token":user._id, "token_type":"example", "expires_in":150000});;
+              //res.send({"access_token":user._id, "token_type":"example", "expires_in":150000});
             } else {
-              console.log("Wrong login password")
-              return res.send({access_token: "dokken", email: true, password: false });
+              res.status(401);
+              return res.send('Invalid password');
             }
           })
         } else //none or more than 1 found 
         {
           console.log("Found none");
-          return res.send({access_token: "invalid", email: false, password: false});
+          res.status(401);
+          return res.send('No account with this email was found');
+          //return res.send({ access_token: "invalid", email: false, password: false });
         }
       });
     });

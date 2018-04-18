@@ -11,11 +11,10 @@ export default Controller.extend({
     actions: {
         authenticate() {
           let { identification, password } = this.getProperties('identification', 'password');
-          console.log(this.get('session').authenticate('authenticator:oauth2', identification, password).catch((reason) => {
-            this.set('errorMessage', reason.error || reason);
-          }));
           this.get('session').authenticate('authenticator:oauth2', identification, password).catch((reason) => {
             this.set('errorMessage', reason.error || reason);
+          }).then(function(res){
+            console.log(res);
           });;
         },
     },

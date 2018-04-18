@@ -3,12 +3,14 @@
     <a {{action 'invalidateSession'}}>Logout</a>
   {{else}}
     {{#link-to 'login'}}Login{{/link-to}}
+    <h2>INACTIVE</h2>
   {{/if}}
+  <!--
     {{#if activeSession}}
     <h4>Hi, {{user.firstName}}!</h4>
     {{else}}
     <button {{action 'login'}} id="login-nav-button">Login</button>
-    {{/if}}
+    {{/if}} -->
 </div>
 <div class="container-fluid dropdown-content-small" id="log-in-menu" {{action "hideLoginMenu" category on="mouseLeave" }}>
     <div class="row">
