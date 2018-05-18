@@ -1,10 +1,10 @@
-<div class="container login-container">
+<div class="container-fluid login-container">
     <div class="row">
         <div class="col">Sign in</div>
     </div>
     <div class="row">
-        <form>
-            <div class="container">
+        <form class="login_form">
+            <div class="col-xs-12">
                 <div class="error-message">
                     {{serverError}}
                 </div>
@@ -12,12 +12,12 @@
                     <b>Email</b><br>
                     <span class="error-message">{{emailError}}</span>
                 </label>
-                {{input value=model.email class="login " id="login-email"}}
+                {{input value=model.email name="dropdown_email"}}
                 <label for="psw">
                     <b>Password</b><br>
                     <span class="error-message">{{passwordError}}</span>
                 </label>
-                {{input value=model.password class="login" id="login-password" type="password"}}
+                {{input value=model.password name="dropdown_password" type="password"}}
                 <button class="login-button" {{action "authenticateLogin"}}>Sign in</button>
             </div>
         </form>

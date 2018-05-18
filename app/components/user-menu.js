@@ -3,9 +3,11 @@ import $ from 'jquery';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 export default Component.extend({
+    /*
     session: false,
     user: '',
     router: service(),
+    */
     init() {
         this._super(...arguments);
         this.errors = [];
@@ -32,6 +34,28 @@ export default Component.extend({
         });
     },
     actions: {
+        showLoginMenu() {
+            document.getElementById('log-in-menu').style.display = 'block';
+        },
+        hideLoginMenu() {
+            document.getElementById('log-in-menu').style.display = 'none';
+        },
+        login() {
+            console.log("login")
+        },
+        logout() {
+            $.ajax({
+                url: "authentication/logout",
+                method: 'POST',
+                component: this,
+                success: function () {
+                    this.component.set('session', false);
+                    this.component.set('user', '');
+                }
+            });
+        },
+    }/*
+    actions: {
 
         login() {
             this.get('router').transitionTo('login');
@@ -47,14 +71,9 @@ export default Component.extend({
                 }
             });
         },
-        showLoginMenu() {
-            document.getElementById('log-in-menu').style.display = 'block';
-        },
-        hideLoginMenu() {
-            document.getElementById('log-in-menu').style.display = 'none';
-        },
+
     },
     model() {
         return this.store.createRecord('user');
-    },
+    },*/
 });

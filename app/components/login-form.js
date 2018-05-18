@@ -1,39 +1,33 @@
+import Component from '@ember/component';
 import $ from 'jquery';
-import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-export default Route.extend({
+
+export default Component.extend({
     router: service(),
-    model() {
-        return this.store.createRecord('user');
-    },
     actions: {
 
         authenticateLogin() {
-            
+
             let user = this.modelFor(this.routeName);
             var email = user.get('email');
             var psw = " ";
             psw = user.get('password');
             var emailOk = false;
             var pswOk = false;
-            
+
             if (!this.validateEmail(email)) {
-                document.getElementById('login-email').style.borderColor = "red";
                 emailOk = false;
                 this.controller.set('emailError', "Email must be of form 'email@example.com'");
             } else {
                 emailOk = true;
-                document.getElementById('login-email').style.borderColor = "lightgrey";
                 this.controller.set('emailError', '');
             }
             if (psw === undefined || psw.length === 0 || psw === "" || psw === null) {
-                document.getElementById('login-password').style.borderColor = "red";
                 pswOk = false;
                 this.controller.set('passwordError', 'Enter a password')
             }
             else {
                 pswOk = true;
-                document.getElementById('login-password').style.borderColor = "lightgrey";
                 this.controller.set('passwordError', '')
             }
             if (emailOk && pswOk) {
@@ -74,5 +68,7 @@ export default Route.extend({
         var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return regex.test(email);
     },
-
+    login() {
+        console.log("login")
+    }
 });

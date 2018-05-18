@@ -14,10 +14,8 @@
             <button {{action 'logout'}} id="logout-nav-button">Logout</button>
             {{else}}
             <!-- not logged in -->
-            <button {{action 'login'}} id="login-nav-button">Login</button>
+            {{login-form}}
             {{/if}}
-            <p id="logged-in-user"></p>
-            <button {{action 'checkSession'}}>Check</button>
         </div>
     </div>
 </div>
