@@ -3,14 +3,19 @@
         <div class="col">Sign in</div>
     </div>
     <div class="login_dropdown_form">
-        <form>
+        <div class="error-message">
+            {{serverError}} {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+            {{/if}}
+        </div>
+        <form {{action 'authenticate' on='submit' }}>
             <div class="row">
                 <div class="col">
                     <h5>Email</h5>
                 </div>
             </div>
             <div class="row">
-                <div class="col">{{input value=model.email name="dropdown_email" type="text"}}</div>
+                <div class="col">{{input id='id' placeholder='Enter Login' value=identification}}</div>
             </div>
             <div class="row">
                 <div class="col">
@@ -18,11 +23,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">{{input value=model.password name="dropdown_password" type="password"}}</div>
+                <div class="col">{{input id='psw' placeholder='Enter Password' type='password' value=password}}</div>
             </div>
             <div class="row">
-                <button class="login-button" >Sign in</button>
+                <button class="login-button" type="submit">Sign in</button>
             </div>
         </form>
     </div>
 </div>
+

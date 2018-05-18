@@ -1,15 +1,7 @@
-import Ember from 'ember';
 import Route from '@ember/routing/route';
-import $ from 'jquery';
-import { inject } from '@ember/controller';
-import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-export default Route.extend(ApplicationRouteMixin, {
-    sessionAuthenticationSucceeded: function () {
-        this.get('router').transitionTo('/');
-    },
-    getSession() {
-        return this.session;
-    },
+
+export default Route.extend( {
+
     model() {
         return {
             categories: [
@@ -35,7 +27,6 @@ export default Route.extend(ApplicationRouteMixin, {
                     subcategories: ["E-Mountain", "E-Road", "E-Cross", "E-Trekking"],
                 },
             ],
-            session: { session: this.getSession(), user: this.user },
             refresh: false,
         }
     },
