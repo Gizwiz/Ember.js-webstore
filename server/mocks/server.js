@@ -172,14 +172,13 @@ module.exports = function (app) {
 
   app.post('/token', function (req, res) {
     console.log("Login authentication");
-    var email = req.body.username;
-    var password = req.body.password;
 
     //find user by email in db
     MongoClient.connect(url, function (err, db) {
       if (err) throw err;
       var dbo = db.db("items");
       var data = { email: false, password: false };
+      console.log(data);
       dbo.collection("users").find({ email: req.body.username }).toArray(function (err, result) {
         if (err) throw err;
         db.close();
@@ -193,7 +192,7 @@ module.exports = function (app) {
               //if match, start session
               //set session user id as user id found in db.
               //pass user info to front for localstorage to server info
-              return res.status(200).json({"access_token":user._id, "token_type":"example", "expires_in":150000});;
+              return res.status(200).json({"access_token":user._id,"user":user, "token_type":"example", "expires_in":150000});;
               //res.send({"access_token":user._id, "token_type":"example", "expires_in":150000});
             } else {
               res.status(401);

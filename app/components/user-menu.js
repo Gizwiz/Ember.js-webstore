@@ -10,53 +10,24 @@ export default Component.extend({
     init() {
         this._super(...arguments);
         this.errors = [];
-        console.log("init");
         this.checkSession();
     },
     checkSession() {
-        $.ajax({
-            url: "authentication/checkSession",
-            method: "POST",
-            component: this,
-            // controller: this.controller,
-            success: function (res) {
-                if (res.status === "active") {
-                    var user = JSON.parse(localStorage.getItem('user'));
-                    this.component.set('activeSession', true);
-                    this.component.set('user', user);
-                } else {
-                    this.component.set('activeSession', false);
-                    this.component.set('user', '');
-                }
-            }
-        }).then(function () {
-        });
+        console.log(this.get('session'));
+        console.log(this.get('session').session.isAuthenticated);
+        if(this.get('session').session.isAuthenticated===true){
+            console.log("Authenticated");
+        } else {
+            console.log("No session active");
+        }
     },
     actions: {
-
-        login() {
-            this.get('router').transitionTo('login');
+        showLoginMenu(){
+            document.getElementById('login-menu').style.display = 'block';
         },
-        //end session
-        logout() {
-            $.ajax({
-                url: "authentication/logout",
-                method: 'POST',
-                component: this,
-                success: function () {
-                    //if server receives logout request, also change front
-                    this.component.set('activeSession', false);
-                    this.component.set('user', '');
-                }
-            });
+        hideLoginMenu(){
+            document.getElementById('login-menu').style.display = 'none';
         },
-        showLoginMenu() {
-            document.getElementById('log-in-menu').style.display = 'block';
-        },
-        hideLoginMenu() {
-            document.getElementById('log-in-menu').style.display = 'none';
-        },
-
         invalidateSession() {
             this.get('session').invalidate();
         }

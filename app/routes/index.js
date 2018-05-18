@@ -1,7 +1,6 @@
 import Route from '@ember/routing/route';
 import $ from 'jquery';
-import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
-export default Route.extend(ApplicationRouteMixin, {
+export default Route.extend( {
     model() {
         var item;
         return $.ajax({

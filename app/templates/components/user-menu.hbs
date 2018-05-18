@@ -1,30 +1,12 @@
 <div class="dropdown" {{action "showLoginMenu" category on="mouseEnter" }}>
-    {{session}}
-  {{#if session.isAuthenticated}}
-    <a {{action 'invalidateSession'}}>Logout</a>
-  {{else}}
-    {{#link-to 'login'}}Login{{/link-to}}
-    <h2>INACTIVE</h2>
-  {{/if}}
-  <!--
-    {{#if activeSession}}
-    <h4>Hi, {{user.firstName}}!</h4>
+    {{#if session.isAuthenticated}}
+        NAME
     {{else}}
-    <button {{action 'login'}} id="login-nav-button">Login</button>
-    {{/if}} -->
+        <h3>Log In</h3>
+    {{/if}}
 </div>
-<div class="container-fluid dropdown-content-small" id="log-in-menu" {{action "hideLoginMenu" category on="mouseLeave" }}>
-    <!--<div class="row">
-        <div class="col">
-            {{#if activeSession}}
-
-            <button {{action 'logout'}} id="logout-nav-button">Logout</button>
-            {{else}}
-
-            
-            {{/if}}
-            <p id="logged-in-user"></p>
-            <button {{action 'checkSession'}}>Check</button>
-        </div>
-    </div>-->
+<div class="container-fluid dropdown-content-small" id="login-menu" {{action "hideLoginMenu" category on="mouseLeave" }}>
+    {{#if session.isAuthenticated}}
+    <a {{action 'invalidateSession'}}>Logout</a>
+    {{else}}  {{login-form}} {{/if}}
 </div>

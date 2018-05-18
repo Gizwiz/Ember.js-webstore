@@ -10,12 +10,14 @@ export default Route.extend(ApplicationRouteMixin, {
     actions: {
 
         authenticateLogin() {
+            
             let user = this.modelFor(this.routeName);
             var email = user.get('email');
             var psw = " ";
             psw = user.get('password');
             var emailOk = false;
             var pswOk = false;
+            
             if (!this.validateEmail(email)) {
                 document.getElementById('login-email').style.borderColor = "red";
                 emailOk = false;
@@ -73,7 +75,5 @@ export default Route.extend(ApplicationRouteMixin, {
         var regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         return regex.test(email);
     },
-    login(userId) {
-        
-    }
+
 });

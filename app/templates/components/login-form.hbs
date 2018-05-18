@@ -1,0 +1,58 @@
+<div class="container-fluid ">
+    <div class="row">
+        <div class="col">Sign in</div>
+    </div>
+    <div class="login_dropdown_form">
+        <div class="error-message">
+            {{serverError}} {{#if errorMessage}}
+            <p>{{errorMessage}}</p>
+            {{/if}}
+        </div>
+        <form {{action 'authenticate' on='submit' }}>
+            <div class="row">
+                <div class="col">
+                    <h5>Email</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">{{input id='id' placeholder='Enter Login' value=identification}}</div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <h5>Password</h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">{{input id='psw' placeholder='Enter Password' type='password' value=password}}</div>
+            </div>
+            <div class="row">
+                <button class="login-button" type="submit">Sign in</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!--
+
+        <form {{action 'authenticate' on='submit' }} class="login_form">
+        <div class="container">
+
+            <div class="error-message">
+                {{serverError}}
+            </div>
+            <label for="email">
+                <b>Email</b>
+                <br>
+                <span class="error-message">{{emailError}}</span>
+            </label>
+            {{input id='identification' placeholder='Enter Login' value=identification}}
+            <label for="psw">
+                <b>Password</b>
+                <br>
+                <span class="error-message">{{passwordError}}</span>
+            </label>
+            {{input id='password' placeholder='Enter Password' type='password' value=password}}
+            <button class="login-button" type="submit">Sign in</button>
+        </div>
+        </form>
+    -->
