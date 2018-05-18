@@ -19,6 +19,9 @@ Router.map(function() {
   this.route('item');
   this.route('login');
   this.route('register');
+  this.route('authenticated', { path: '' }, function() {
+    // all routes that require the session to be authenticated
+  });
 });
 
 export default Router;

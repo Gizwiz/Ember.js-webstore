@@ -6,6 +6,7 @@ export default Component.extend({
     activeSession: false,
     user: '',
     router: service(),
+    session: service('session'),
     init() {
         this._super(...arguments);
         this.errors = [];
@@ -55,6 +56,10 @@ export default Component.extend({
         hideLoginMenu() {
             document.getElementById('log-in-menu').style.display = 'none';
         },
+
+        invalidateSession() {
+            this.get('session').invalidate();
+        }
     },
     model() {
         return this.store.createRecord('user');

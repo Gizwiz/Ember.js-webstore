@@ -1,7 +1,8 @@
 import $ from 'jquery';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
-export default Route.extend( {
+import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+export default Route.extend(ApplicationRouteMixin, {
     router: service(),
     model() {
         return this.store.createRecord('user');

@@ -1,4 +1,5 @@
 <div class="dropdown" {{action "showLoginMenu" category on="mouseEnter" }}>
+    {{session}}
   {{#if session.isAuthenticated}}
     <a {{action 'invalidateSession'}}>Logout</a>
   {{else}}
@@ -13,17 +14,17 @@
     {{/if}} -->
 </div>
 <div class="container-fluid dropdown-content-small" id="log-in-menu" {{action "hideLoginMenu" category on="mouseLeave" }}>
-    <div class="row">
+    <!--<div class="row">
         <div class="col">
             {{#if activeSession}}
-            <!-- logged in -->
+
             <button {{action 'logout'}} id="logout-nav-button">Logout</button>
             {{else}}
-            <!-- not logged in -->
+
             
             {{/if}}
             <p id="logged-in-user"></p>
             <button {{action 'checkSession'}}>Check</button>
         </div>
-    </div>
+    </div>-->
 </div>
