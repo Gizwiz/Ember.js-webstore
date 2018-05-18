@@ -10,13 +10,13 @@ module.exports = function (app) {
   var url = 'mongodb://user:password@ds127391.mlab.com:27391/items';
 
   //EXPRESS SESSION
-  var session = require('express-session');
+  /*var session = require('express-session');
   app.use(session({
     secret: 'wololoo',
     resave: false,
     saveUninitialized: true,
     cookie: {},
-  }));
+  }));*/
   //BCRYPT
   var bcrypt = require('bcrypt');
   const saltRounds = 10;
@@ -59,17 +59,17 @@ module.exports = function (app) {
         }
       });
     });*/
-
-  app.post('/authentication/checkSession', function (req, res) {
-    console.log("Checking user session");
-    console.log(req.session.userId);
-    if (req.session.userId === undefined) {
-      return res.send({ status: "inactive" });
-    } else {
-      return res.send({ status: "active", session: req.session });
-    }
-
-  });
+  /*
+    app.post('/authentication/checkSession', function (req, res) {
+      console.log("Checking user session");
+      console.log(req.session.userId);
+      if (req.session.userId === undefined) {
+        return res.send({ status: "inactive" });
+      } else {
+        return res.send({ status: "active", session: req.session });
+      }
+  
+    });*/
 
   app.post('/api/', function (req, res) {
     //get query for search
@@ -167,6 +167,49 @@ module.exports = function (app) {
         }
       });
     });
+  });
+
+
+  app.post('/token', function (req, res) {
+    console.log("Login authentication");
+    var email = req.body.username;
+    var password = req.body.password;
+
+    //find user by email in db
+    MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      var dbo = db.db("items");
+      var data = { email: false, password: false };
+      dbo.collection("users").find({ email: req.body.username }).toArray(function (err, result) {
+        if (err) throw err;
+        db.close();
+        //if one found
+        if (result.length === 1) {
+          var user = result[0];
+          bcrypt.compare(req.body.password, result[0].password, function (err, result) {
+            //if pswrds match, res is true
+            if (result === true) {
+              console.log("Correct login information");
+              //if match, start session
+              //set session user id as user id found in db.
+              //pass user info to front for localstorage to server info
+              return res.status(200).json({"access_token":user._id, "token_type":"example", "expires_in":150000});;
+              //res.send({"access_token":user._id, "token_type":"example", "expires_in":150000});
+            } else {
+              res.status(401);
+              return res.send('Invalid password');
+            }
+          })
+        } else //none or more than 1 found 
+        {
+          console.log("Found none");
+          res.status(401);
+          return res.send('No account with this email was found');
+          //return res.send({ access_token: "invalid", email: false, password: false });
+        }
+      });
+    });
+
   });
 
   app.post('/authentication/logout', function (req, res) {
