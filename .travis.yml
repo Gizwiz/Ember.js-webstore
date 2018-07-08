@@ -24,3 +24,9 @@ before_install:
 script:
   - npm run lint:js
   - npm test
+
+deploy:
+  provider: heroku
+  api_key: 
+    secure: "921fdd12-7938-4078-8ade-b5b061c1139a"
+  on: master

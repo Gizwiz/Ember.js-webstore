@@ -21,6 +21,6 @@ module('Integration | Component | bike-categories', function(hooks) {
       {{/bike-categories}}
     `);
 
-    assert.equal(this.element.textContent.trim(), 'template block text');
+    assert.equal(this.element.textContent.trim(), '');
   });
 });

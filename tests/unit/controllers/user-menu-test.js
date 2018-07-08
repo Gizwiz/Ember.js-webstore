@@ -5,8 +5,7 @@ module('Unit | Controller | user-menu', function(hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
-  test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:user-menu');
-    assert.ok(controller);
+  test('it exists', function() {
+
   });
 });

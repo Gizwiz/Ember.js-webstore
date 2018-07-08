@@ -1,6 +1,4 @@
 import Component from '@ember/component';
-import $ from 'jquery';
-import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 export default Component.extend({
   
@@ -11,16 +9,6 @@ export default Component.extend({
     init() {
         this._super(...arguments);
         this.errors = [];
-        this.checkSession();
-    },
-    checkSession() {
-        console.log(this.get('session'));
-        console.log(this.get('session').session.isAuthenticated);
-        if(this.get('session').session.isAuthenticated===true){
-            console.log("Authenticated");
-        } else {
-            console.log("No session active");
-        }
     },
     actions: {
         showLoginMenu(){

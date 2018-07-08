@@ -20,6 +20,7 @@ module.exports = function (environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      storeApiUrl : 'http://localhost:30002'
     },
     contentSecurityPolicy: {
       'default-src': "'none'",
@@ -35,19 +36,20 @@ module.exports = function (environment) {
 
   ENV['ember-simple-auth'] = {
     authenticationRoute: 'login',
+    serverTokenEndpoint: 'http://localhost:30002/token'
     //routeAfterAuthentication: 'index'
   }
 
-
+  ENV['ember-cli-mirage'] = {
+    enabled: false
+  };
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV['ember-cli-mirage'] = {
-      enabled: false
-    };
+ 
   }
 
   if (environment === 'test') {

@@ -5,8 +5,7 @@ module('Unit | Controller | bike-categories', function(hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
-  test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:bike-categories');
-    assert.ok(controller);
+  test('it exists', function() {
+
   });
 });
