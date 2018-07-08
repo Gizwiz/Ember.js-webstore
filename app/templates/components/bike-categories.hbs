@@ -6,8 +6,8 @@
         <div class="col dropdown">
             <div>
                 {{#each bikes as |category| }}
-                <div class='category-main'>
-                    <div style="height:100%" {{action "redirect" category}} {{action "populateDropdown" category on="mouseEnter" }} class="category_name dropdown">{{category.name}}</div>
+                <div class='category-main'> 
+                    <div style="height:100%" {{action "populateDropdown" category on="mouseEnter" }} class="dropdown">{{#link-to 'bikes' (query-params category=category.categoryName show=25) class='category_name'}}{{category.name}}{{/link-to}}</div>
                 </div>
                 {{/each}}
             </div>
@@ -29,15 +29,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-<!--
-                <button {{action 'login'}} id="login-nav-button">Login</button>
-                <div id="user_function_dropdown">
-                    
-                    <button {{action 'logout'}} id="logout-nav-button">Logout</button>
-                    <button {{action 'checkSession'}}>Check</button>
-                    
--->

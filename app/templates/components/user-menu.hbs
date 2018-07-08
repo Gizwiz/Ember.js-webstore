@@ -1,8 +1,10 @@
 <div class="dropdown" {{action "showLoginMenu" category on="mouseEnter" }}>
     {{#if session.isAuthenticated}}
-        NAME
+        Hi, {{session.session.content.authenticated.user.firstName}}!
+        {{log session.session.content.authenticated.user}}
+        
     {{else}}
-        <h3>Log In</h3>
+        <h4>Log In</h4>
     {{/if}}
 </div>
 <div class="container-fluid dropdown-content-small" id="login-menu" {{action "hideLoginMenu" category on="mouseLeave" }}>

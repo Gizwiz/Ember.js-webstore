@@ -2,6 +2,7 @@ import $ from 'jquery';
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
+import ENV from '../config/environment';
 export default Route.extend(ApplicationRouteMixin, {
     router: service(),
     model() {
@@ -39,7 +40,7 @@ export default Route.extend(ApplicationRouteMixin, {
             }
             if (emailOk && pswOk) {
                 $.ajax({
-                    url: "/authentication/login",
+                    url: ENV.APP.storeApiUrl+"/authentication/login",
                     method: "POST",
                     data: { email: email, password: psw },
                     controller: this.controller, //jquery ajax redefines the 'this' keyword, so have to refer to the ember controller like so

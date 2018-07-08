@@ -7,11 +7,13 @@ export default Route.extend( {
             categories: [
                 {
                     name: 'MTB',
+                    categoryName: 'mtb',
                     subcategories: ["Hardtail", "Full Suspension", "Enduro", "FreeRide", "Trail", "XC", "Women's Hardtail", "Women's Full Suspension"],
                     image: 'mtb/enduro_1.jpg',
                 },
                 {
                     name: 'Road',
+                    categoryName: 'road',
                     subcategories: ["Aluminum", "Carbon", "Gravel", "Triathlon", "Cyclocross", "Women's Road Bikes"],
                 },
                 {

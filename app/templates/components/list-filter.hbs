@@ -1,0 +1,9 @@
+<div class="list-filter">
+    <span class="list-filter-name">{{this.name}}</span>
+    <select onchange={{action this.sortAction value='target.value'}}>
+    {{#each-in this.options as |option opt|}}
+        <option value={{option}}>{{opt}}</option>
+    {{/each-in}}
+        
+    </select>
+</div>

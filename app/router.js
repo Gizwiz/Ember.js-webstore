@@ -9,13 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('/');
   this.route('about');
-  this.route('mtb');
-  this.route('road');
-  this.route('cyclocross');
-  this.route('triathlon');
-  this.route('trekking');
-  this.route('urban');
-  this.route('electric');
+  //this.route('mtb');
   this.route('admin');
   this.route('item');
   this.route('login');
@@ -25,6 +19,8 @@ Router.map(function() {
   this.route('authenticated', { path: '' }, function() {
     // all routes that require the session to be authenticated
   });*/
+  this.route('rt');
+  this.route('bikes');
 });
 
 export default Router;

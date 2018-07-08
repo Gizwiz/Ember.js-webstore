@@ -5,8 +5,7 @@ module('Unit | Controller | login-form', function(hooks) {
   setupTest(hooks);
 
   // Replace this with your real tests.
-  test('it exists', function(assert) {
-    let controller = this.owner.lookup('controller:login-form');
-    assert.ok(controller);
+  test('it exists', function() {
+
   });
 });
