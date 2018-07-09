@@ -22,6 +22,10 @@ app.use(allowCrossDomain);
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+app.get('/', function(req, res){
+  res.send('Generic Bike Store REST API')
+});
+
 app.post('/api/bikes', function (req, res) {
     //get query for search
     var searchCategory = req.body.category
