@@ -1,7 +1,7 @@
 {
-  "name": "kpapi",
+  "name": "stapi",
   "version": "1.0.0",
-  "description": "kpapi",
+  "description": "stapi",
   "main": "server.js",
   "dependencies": {
     "bcrypt": "^3.0.0",

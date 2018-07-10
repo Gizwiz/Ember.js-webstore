@@ -23,7 +23,8 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.get('/', function(req, res){
-  res.send('Generic Bike Store REST API')
+  res.writeHead(200);
+  res.end("hello world\n");
 });
 
 app.post('/api/bikes', function (req, res) {
@@ -223,4 +224,4 @@ app.post('/api/bikes', function (req, res) {
     });
   });
 
-app.listen(30002, () => console.log('Example app listening on port 30002!'))
+app.listen(30002, () => console.log('App listening on port 30002!'))
