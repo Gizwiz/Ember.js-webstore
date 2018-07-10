@@ -37,7 +37,6 @@ module.exports = function (environment) {
 
   ENV['ember-simple-auth'] = {
     authenticationRoute: 'login',
-    serverTokenEndpoint: 'http://localhost:30002/token'
     //routeAfterAuthentication: 'index'
   }
 
