@@ -6,6 +6,7 @@ export default Route.extend( {
     stapi: service('store-api'),
     model() {
         var item;
+
         return $.ajax({
             url: ENV.APP.storeApiUrl+'/api/showcase/',
             method: 'POST',

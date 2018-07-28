@@ -21,7 +21,7 @@ export default Component.extend({
         toHome() {
             this.get('router').transitionTo('/');
         },
-        populateDropdown(cats) {
+        /*populateDropdown(cats) {
             document.getElementById('ddc').style.display = 'block';
             document.getElementById('link-list').innerHTML = "<h3>" + cats.name + "</h3>";
 
@@ -35,6 +35,6 @@ export default Component.extend({
         },
         openDropdown() {
             document.getElementById('ddc').style.display = 'block';
-        },
+        },*/
     }
 });

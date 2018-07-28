@@ -1,13 +1,23 @@
 import Controller from '@ember/controller';
-import { computed } from '@ember/object';
+import EmberObject, { computed } from '@ember/object';
+import { filter } from 'rsvp';
 
 export default Controller.extend({
     init() {
         this._super(...arguments);
         this.sortProps = ['popularity'];
     },
+    queryParams: ["category"],
 
-    filteredBikes: computed.sort('model', 'sortProps'),
+    filteredBikes: computed.filterBy('model', 'category'),
+    /*filteredBikes: computed('category', 'model', function(){
+        let category = this.get('category');
+        let bikes = this.get('model');
+        console.log("lol")
+        return bikes.filterBy('category', category)
+    }),*/
+
+    sortedBikes: computed.sort('model', 'sortProps'),
 
     actions: {
         sort(order) {

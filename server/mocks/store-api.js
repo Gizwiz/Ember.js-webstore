@@ -16,7 +16,43 @@ const saltRounds = 10;
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+function isEmpty(obj) {
+  for(var key in obj) {
+      if(obj.hasOwnProperty(key))
+          return false;
+  }
+  return true;
+}
+app.get('/bikes', function (req, res) {
+  var dbo;
+  let query = req.query;
+  console.log(query)
+  MongoClient.connect(url, function (err, db) {
+    if (err) throw err;
+    dbo = db.db("items");
+    if(isEmpty(query)){
+      dbo.collection("items").find({}).toArray(function (err, result) {
+        if (err) throw err;
+        db.close();
+        res.send({"data":result});
+      });
+    } else {
+      console.log(query.filter.id)
+      var o_id = new ObjectID(query.filter.id);
+      dbo.collection("items").find({ _id: o_id }).toArray(function (err, result) {
+        if (err) throw err;
+        db.close();
+        res.send({"data":result});
+      });
+    }
 
+
+  
+
+  });
+
+});
+/*
 app.post('/api/bikes', function (req, res) {
     //get query for search
     var searchCategory = req.body.category
@@ -41,7 +77,7 @@ app.post('/api/bikes', function (req, res) {
 
     });
 
-  });
+  });*/
 
   app.post('/api/item/', function (req, res) {
     //to be able to find documents in mongo by ID, need to convert to ObjectId
