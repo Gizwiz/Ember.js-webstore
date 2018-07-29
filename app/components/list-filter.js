@@ -6,5 +6,5 @@ export default Component.extend({
         var options = JSON.parse(this.options)
         this.set('options',options.options )
     },
-    
+
 });

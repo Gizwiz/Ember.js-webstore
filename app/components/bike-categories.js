@@ -13,11 +13,6 @@ export default Component.extend({
         willTransition() {
             this.checkSession();
         },
-        redirect(category) {
-            // $(".page_wrapper").fadeOut(200);
-            //var r = category.name.toLowerCase();
-            //this.get('router').transitionTo(r);
-        },
         toHome() {
             this.get('router').transitionTo('/');
         },

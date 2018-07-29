@@ -1,36 +1,59 @@
-<div class="container-fluid item_display_wrapper">
-    <div class="row">
+<div class="container-fluid item_display_list_wrapper">
+    <div class="row filters-row">
         <div class="col"></div>
         <div class="col"></div>
-        <div class="col">{{list-filter options='{"options":["Popularity", "Price: (Low - High)", "Price: (High - Low)","Name: (A - Z)", "Name: (Z - A)"]}' sortAction=this.sortAction}}</div>
+        <div class="col">{{list-filter options='{"options":["Popularity", "Price: (Low - High)", "Price: (High - Low)","Name: (A - Z)", "Name: (Z - A)"]}' sortAction=(action 'sortAction')}}</div>
     </div>
-    <div class="row list_main_row"> 
-            <div class="grid-container col-xl-12">
-            {{#each bikes as |bike index|}}
-                <div class="grid-item ">
-                        <div class="container">
-                                <div class="row item_preview_first_row">
-                                    <img src="{{bike.img}}" alt="" class="item_preview_image" >
-                                    <ul>
-                                        {{#each bike.salesPoints as |point|}}
-                                            <li>{{point}}</li>
-                                        {{/each}}
-                                    </ul>
-                                </div>
-                                <div class="row">
-                                    {{#link-to 'item' (query-params id=bike._id)}}<span>{{bike.name}}&nbsp;{{bike._id}}</span>{{/link-to}}
-                                </div>
-                                <div class="row">
-                                    <span>{{bike.price}}{{bike.unit}}</span>
-                                </div>
-                                <div class="row">
-                                    <span>{{bike.description}}</span>
-                                </div>
-                        </div>
-                </div>
-            {{/each}}
+
+    {{#each this.sortedBikes as |bike index|}}
+        <div class="row item-row"> 
+            <div class="col-md-2 item_preview_iamge"> 
+                    <img src="{{bike.img}}" alt="" class="item_preview_image" >
             </div>
-    </div>
+            <div class="col-md-7">
+                    <div class="row">
+                        {{#link-to 'item' (query-params id=bike.id)}}<span>{{bike.name}}</span>{{/link-to}}
+                    </div>
+ 
+                    <div class="row">
+                        <span>{{bike.description}}</span>
+                    </div>
+            </div>
+            <div class="col-md-3">
+                <div class="row">
+                    <span class="price">{{format-price bike.price}}{{bike.unit}}</span>
+                </div>
+                <div class="row">
+                    <div class="row-actions">
+                        {{#link-to 'item' (query-params id=bike.id) class="btn btn-info view-item-button"}}<h4>View item</h4>{{/link-to}}
+                    </div>
+                </div>
+
+            </div>
+                    <!-- <div class="row">
+                            <div class="container">
+                                    <div class="row item_preview_first_row">
+                                        <img src="{{bike.img}}" alt="" class="item_preview_image" >
+                                        <ul>
+                                            {{#each bike.salesPoints as |point|}}
+                                                <li>{{point}}</li>
+                                            {{/each}}
+                                        </ul>
+                                    </div>
+                                    <div class="row">
+                                        {{log bike.id}}
+                                        {{#link-to 'item' (query-params id=bike._id)}}<span>{{bike.name}}&nbsp;{{bike._id}}</span>{{/link-to}}
+                                    </div>
+                                    <div class="row">
+                                        <span>{{bike.price}}{{bike.unit}}</span>
+                                    </div>
+                                    <div class="row">
+                                        <span>{{bike.description}}</span>
+                                    </div>
+                            </div>
+                    </div> -->
+        </div>
+    {{/each}}
 </div>
 <script>
    // $(".page_wrapper").fadeIn(300);

@@ -20,7 +20,7 @@ Router.map(function() {
     // all routes that require the session to be authenticated
   });*/
   this.route('rt');
-  this.route('bikes');
+  this.route('view');
 });
 
 export default Router;
