@@ -198,16 +198,31 @@ body, html {
     display: inline-block;
 
 }
-
 .item_display_wrapper{
+    position:absolute;
+    top: 4%;
     min-height: 100vh;
-    padding-left: 15%;
-    padding-right: 15%;
+    padding-left: 20%;
+    padding-right: 20%;
+}
+.item_display_list_wrapper{
+    position:absolute;
+    top: 7%;
+    min-height: 100vh;
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
+.filters-row{
+    margin-bottom: 3%;
+}
 
-.item_preview_first_row{
-    min-height:200px;
+.item-row{
+    margin-bottom: 2%;
+    padding-bottom: 2%;
+    border-bottom: 1px solid black;
+    min-height: 200px;
+    background-color: #fff;
 }
 
 .item_preview_image{
@@ -239,7 +254,12 @@ body, html {
 
 .row-actions{
     position: absolute;
-    bottom: 10%;
+    bottom: 0;
+}
+.view-item-button{
+    width: 12vw;
+    color:white;
+    text-align: center;
 }
 
 .display_middle_wrapper{

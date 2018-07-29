@@ -13,15 +13,10 @@ export default Component.extend({
         willTransition() {
             this.checkSession();
         },
-        redirect(category) {
-            // $(".page_wrapper").fadeOut(200);
-            //var r = category.name.toLowerCase();
-            //this.get('router').transitionTo(r);
-        },
         toHome() {
             this.get('router').transitionTo('/');
         },
-        /*populateDropdown(cats) {
+        populateDropdown(cats) {
             document.getElementById('ddc').style.display = 'block';
             document.getElementById('link-list').innerHTML = "<h3>" + cats.name + "</h3>";
 
@@ -35,6 +30,6 @@ export default Component.extend({
         },
         openDropdown() {
             document.getElementById('ddc').style.display = 'block';
-        },*/
+        },
     }
 });

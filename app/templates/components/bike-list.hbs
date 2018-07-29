@@ -1,12 +1,13 @@
-<div class="container-fluid item_display_wrapper">
-    <div class="row">
+<div class="container-fluid item_display_list_wrapper">
+    <div class="row filters-row">
         <div class="col"></div>
         <div class="col"></div>
-        <div class="col">{{list-filter options='{"options":["Popularity", "Price: (Low - High)", "Price: (High - Low)","Name: (A - Z)", "Name: (Z - A)"]}' sortAction=this.sortAction}}</div>
+        <div class="col">{{list-filter options='{"options":["Popularity", "Price: (Low - High)", "Price: (High - Low)","Name: (A - Z)", "Name: (Z - A)"]}' sortAction=(action 'sortAction')}}</div>
     </div>
-    {{#each this.filteredBikes as |bike index|}}
-        <div class="row"> 
-            <div class="col-md-3 item_preview_iamge"> 
+
+    {{#each this.sortedBikes as |bike index|}}
+        <div class="row item-row"> 
+            <div class="col-md-2 item_preview_iamge"> 
                     <img src="{{bike.img}}" alt="" class="item_preview_image" >
             </div>
             <div class="col-md-7">
@@ -18,20 +19,13 @@
                         <span>{{bike.description}}</span>
                     </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <div class="row">
-                    <ul>
-                        {{#each bike.salesPoints as |point|}}
-                            <li>{{point}}</li>
-                        {{/each}}
-                    </ul>
-                </div>
-                <div class="row">
-                    <span class="price">{{bike.price}}{{bike.unit}}</span>
+                    <span class="price">{{format-price bike.price}}{{bike.unit}}</span>
                 </div>
                 <div class="row">
                     <div class="row-actions">
-                        <button>View Item ></button>
+                        {{#link-to 'item' (query-params id=bike.id) class="btn btn-info view-item-button"}}<h4>View item</h4>{{/link-to}}
                     </div>
                 </div>
 

@@ -26,7 +26,6 @@ function isEmpty(obj) {
 app.get('/bikes', function (req, res) {
   var dbo;
   let query = req.query;
-  console.log(query)
   MongoClient.connect(url, function (err, db) {
     if (err) throw err;
     dbo = db.db("items");
@@ -37,7 +36,6 @@ app.get('/bikes', function (req, res) {
         res.send({"data":result});
       });
     } else {
-      console.log(query.filter.id)
       var o_id = new ObjectID(query.filter.id);
       dbo.collection("items").find({ _id: o_id }).toArray(function (err, result) {
         if (err) throw err;
@@ -45,9 +43,6 @@ app.get('/bikes', function (req, res) {
         res.send({"data":result});
       });
     }
-
-
-  
 
   });
 

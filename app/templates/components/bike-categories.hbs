@@ -1,31 +1,30 @@
 <div class="container-fluid categories-wrapper">
-    <div class="row">
-        <div class="col ">
+    <div class="row" >
+        <div class="col "  {{action "closeDropdown" on="mouseMove" }}>
             <img src="logo_whitebg.png" alt="" id="top-logo" {{action "toHome"}}>
         </div>
-        <div class="col">
+        <div class="col dropdown" >
             <div>
                 {{#each bikes as |category| }}
                 <div class='category-main'> 
-                    <div style="height:100%">{{#link-to 'view' (query-params category=category.categoryName show=25) class='category_name'}}{{category.name}}{{/link-to}}</div>
+                    <div style="height:100%" {{action "populateDropdown" category on="mouseEnter" }}{{action "closeDropdown" on="click"}} class="dropdown">{{#link-to 'view' (query-params category=category.categoryName show=25) class='category_name'}}{{category.name}}{{/link-to}}</div>
                 </div>
                 {{/each}}
             </div>
-            <!--
             <div class="container-fluid dropdown-content" id="ddc">
                 <div class="row" style="height:100%;">
-                    <div class="col" {{action "closeDropdown" on="mouseEnter" }}>
+                    <div class="col" {{action "closeDropdown" on="mouseMove" }}>
                     </div>
                     <div class="col" {{action "closeDropdown" on="mouseLeave" }}>
-                        <div id="link-list"></div>
+                        <div id="link-list" {{action "closeDropdown" on="click"}}></div>s
                     </div>
-                    <div class="col" {{action "closeDropdown" on="mouseEnter" }}>
+                    <div class="col" {{action "closeDropdown" on="mouseMove" }}>
                         <div id="link-list-image-container"></div>
                     </div>
                 </div>
-            </div>-->
+            </div>
         </div>
-        <div class="col">
+        <div class="col"  {{action "closeDropdown" on="mouseMove" }}>
             {{user-menu session=session}}
         </div>
     </div>
